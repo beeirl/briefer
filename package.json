@@ -1,0 +1,27 @@
+{
+  "name": "briefer",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "workspaces": [
+    "packages/*",
+    "packages/web/*"
+  ],
+  "scripts": {
+    "dev": "sst dev",
+    "sso": "aws sso login --sso-session=5head",
+    "typecheck": "bun --filter=* typecheck"
+  },
+  "dependencies": {
+    "sst": "3.9.31"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "typescript": "^5.3.3"
+  }
+}

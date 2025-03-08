@@ -1,0 +1,8 @@
+export { default as ArrowTop } from './arrow-top.svg?react'
+export { default as CheckCircle } from './check-circle.svg?react'
+export { default as Check } from './check.svg?react'
+export { default as ChevronDown } from './chevron-down.svg?react'
+export { default as Copy } from './copy.svg?react'
+export { default as Plus } from './plus.svg?react'
+export { default as Spinner } from './spinner.svg?react'
+export { default as User } from './user.svg?react'

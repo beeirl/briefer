@@ -1,0 +1,8 @@
+export { default as Check } from './check.svg?react'
+export { default as ChevronDown } from './chevron-down.svg?react'
+export { default as ChevronLeft } from './chevron-left.svg?react'
+export { default as ChevronRight } from './chevron-right.svg?react'
+export { default as ChevronUpDown } from './chevron-up-down.svg?react'
+export { default as ChevronUp } from './chevron-up.svg?react'
+export { default as Loader } from './loader.svg?react'
+export { default as User } from './user.svg?react'
