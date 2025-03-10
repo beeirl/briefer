@@ -14,9 +14,18 @@ declare module "sst" {
       "type": "sst.aws.Router"
       "url": string
     }
+    "AssetStorage": {
+      "name": string
+      "type": "sst.aws.Bucket"
+    }
     "Auth": {
       "type": "sst.aws.Auth"
       "url": string
+    }
+    "Bus": {
+      "arn": string
+      "name": string
+      "type": "sst.aws.Bus"
     }
     "Database": {
       "database": string
@@ -31,13 +40,13 @@ declare module "sst" {
       "sender": string
       "type": "sst.aws.Email"
     }
-    "GoogleClientID": {
+    "GeminiApiKey": {
       "type": "sst.sst.Secret"
       "value": string
     }
-    "PublicStorage": {
-      "name": string
-      "type": "sst.aws.Bucket"
+    "GoogleClientID": {
+      "type": "sst.sst.Secret"
+      "value": string
     }
     "TwelvelabsApiKey": {
       "type": "sst.sst.Secret"

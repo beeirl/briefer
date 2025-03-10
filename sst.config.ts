@@ -7,7 +7,7 @@ export default $config({
     return {
       name: 'briefer',
       home: 'aws',
-      removal: input?.stage === 'production' ? 'retain' : 'remove',
+      removal: input.stage === 'production' ? 'retain' : 'remove',
       providers: {
         aws: {
           profile: process.env.GITHUB_ACTIONS
@@ -15,7 +15,8 @@ export default $config({
             : input.stage === 'production'
               ? 'briefer-production'
               : 'briefer-dev',
-          region: 'us-east-1',
+          region:
+            input.stage === 'production' || input.stage === 'dev' ? 'us-east-1' : 'eu-central-1',
         },
         cloudflare: true,
         planetscale: true,

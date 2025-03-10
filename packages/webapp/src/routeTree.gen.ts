@@ -16,8 +16,8 @@ import { Route as DashboardImport } from './routes/_dashboard'
 import { Route as AuthImport } from './routes/_auth'
 import { Route as DashboardIndexImport } from './routes/_dashboard/index'
 import { Route as OnboardingOnboardingImport } from './routes/_onboarding/onboarding'
-import { Route as DashboardBriefIDImport } from './routes/_dashboard/$briefID'
 import { Route as AuthAuthIndexImport } from './routes/_auth/auth/index'
+import { Route as DashboardBriefBriefIDImport } from './routes/_dashboard/brief.$briefID'
 import { Route as AuthAuthCodeIndexImport } from './routes/_auth/auth/code/index'
 import { Route as AuthAuthCodeVerifyImport } from './routes/_auth/auth/code/verify'
 
@@ -50,16 +50,16 @@ const OnboardingOnboardingRoute = OnboardingOnboardingImport.update({
   getParentRoute: () => OnboardingRoute,
 } as any)
 
-const DashboardBriefIDRoute = DashboardBriefIDImport.update({
-  id: '/$briefID',
-  path: '/$briefID',
-  getParentRoute: () => DashboardRoute,
-} as any)
-
 const AuthAuthIndexRoute = AuthAuthIndexImport.update({
   id: '/auth/',
   path: '/auth/',
   getParentRoute: () => AuthRoute,
+} as any)
+
+const DashboardBriefBriefIDRoute = DashboardBriefBriefIDImport.update({
+  id: '/brief/$briefID',
+  path: '/brief/$briefID',
+  getParentRoute: () => DashboardRoute,
 } as any)
 
 const AuthAuthCodeIndexRoute = AuthAuthCodeIndexImport.update({
@@ -99,13 +99,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardingImport
       parentRoute: typeof rootRoute
     }
-    '/_dashboard/$briefID': {
-      id: '/_dashboard/$briefID'
-      path: '/$briefID'
-      fullPath: '/$briefID'
-      preLoaderRoute: typeof DashboardBriefIDImport
-      parentRoute: typeof DashboardImport
-    }
     '/_onboarding/onboarding': {
       id: '/_onboarding/onboarding'
       path: '/onboarding'
@@ -118,6 +111,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof DashboardIndexImport
+      parentRoute: typeof DashboardImport
+    }
+    '/_dashboard/brief/$briefID': {
+      id: '/_dashboard/brief/$briefID'
+      path: '/brief/$briefID'
+      fullPath: '/brief/$briefID'
+      preLoaderRoute: typeof DashboardBriefBriefIDImport
       parentRoute: typeof DashboardImport
     }
     '/_auth/auth/': {
@@ -161,13 +161,13 @@ const AuthRouteChildren: AuthRouteChildren = {
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface DashboardRouteChildren {
-  DashboardBriefIDRoute: typeof DashboardBriefIDRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardBriefBriefIDRoute: typeof DashboardBriefBriefIDRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
-  DashboardBriefIDRoute: DashboardBriefIDRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardBriefBriefIDRoute: DashboardBriefBriefIDRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
@@ -188,9 +188,9 @@ const OnboardingRouteWithChildren = OnboardingRoute._addFileChildren(
 
 export interface FileRoutesByFullPath {
   '': typeof OnboardingRouteWithChildren
-  '/$briefID': typeof DashboardBriefIDRoute
   '/onboarding': typeof OnboardingOnboardingRoute
   '/': typeof DashboardIndexRoute
+  '/brief/$briefID': typeof DashboardBriefBriefIDRoute
   '/auth': typeof AuthAuthIndexRoute
   '/auth/code/verify': typeof AuthAuthCodeVerifyRoute
   '/auth/code': typeof AuthAuthCodeIndexRoute
@@ -198,9 +198,9 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '': typeof OnboardingRouteWithChildren
-  '/$briefID': typeof DashboardBriefIDRoute
   '/onboarding': typeof OnboardingOnboardingRoute
   '/': typeof DashboardIndexRoute
+  '/brief/$briefID': typeof DashboardBriefBriefIDRoute
   '/auth': typeof AuthAuthIndexRoute
   '/auth/code/verify': typeof AuthAuthCodeVerifyRoute
   '/auth/code': typeof AuthAuthCodeIndexRoute
@@ -211,9 +211,9 @@ export interface FileRoutesById {
   '/_auth': typeof AuthRouteWithChildren
   '/_dashboard': typeof DashboardRouteWithChildren
   '/_onboarding': typeof OnboardingRouteWithChildren
-  '/_dashboard/$briefID': typeof DashboardBriefIDRoute
   '/_onboarding/onboarding': typeof OnboardingOnboardingRoute
   '/_dashboard/': typeof DashboardIndexRoute
+  '/_dashboard/brief/$briefID': typeof DashboardBriefBriefIDRoute
   '/_auth/auth/': typeof AuthAuthIndexRoute
   '/_auth/auth/code/verify': typeof AuthAuthCodeVerifyRoute
   '/_auth/auth/code/': typeof AuthAuthCodeIndexRoute
@@ -223,18 +223,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | ''
-    | '/$briefID'
     | '/onboarding'
     | '/'
+    | '/brief/$briefID'
     | '/auth'
     | '/auth/code/verify'
     | '/auth/code'
   fileRoutesByTo: FileRoutesByTo
   to:
     | ''
-    | '/$briefID'
     | '/onboarding'
     | '/'
+    | '/brief/$briefID'
     | '/auth'
     | '/auth/code/verify'
     | '/auth/code'
@@ -243,9 +243,9 @@ export interface FileRouteTypes {
     | '/_auth'
     | '/_dashboard'
     | '/_onboarding'
-    | '/_dashboard/$briefID'
     | '/_onboarding/onboarding'
     | '/_dashboard/'
+    | '/_dashboard/brief/$briefID'
     | '/_auth/auth/'
     | '/_auth/auth/code/verify'
     | '/_auth/auth/code/'
@@ -290,8 +290,8 @@ export const routeTree = rootRoute
     "/_dashboard": {
       "filePath": "_dashboard.tsx",
       "children": [
-        "/_dashboard/$briefID",
-        "/_dashboard/"
+        "/_dashboard/",
+        "/_dashboard/brief/$briefID"
       ]
     },
     "/_onboarding": {
@@ -300,16 +300,16 @@ export const routeTree = rootRoute
         "/_onboarding/onboarding"
       ]
     },
-    "/_dashboard/$briefID": {
-      "filePath": "_dashboard/$briefID.tsx",
-      "parent": "/_dashboard"
-    },
     "/_onboarding/onboarding": {
       "filePath": "_onboarding/onboarding.tsx",
       "parent": "/_onboarding"
     },
     "/_dashboard/": {
       "filePath": "_dashboard/index.tsx",
+      "parent": "/_dashboard"
+    },
+    "/_dashboard/brief/$briefID": {
+      "filePath": "_dashboard/brief.$briefID.tsx",
       "parent": "/_dashboard"
     },
     "/_auth/auth/": {

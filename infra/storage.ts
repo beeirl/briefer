@@ -1,3 +1,3 @@
-export const publicStorage = new sst.aws.Bucket('PublicStorage', {
-  access: 'public',
+export const assetStorage = new sst.aws.Bucket('AssetStorage', {
+  access: 'cloudfront',
 })

@@ -35,7 +35,9 @@ function AvatarField({
         {...props}
       />
       {description && <FieldDescription>{description}</FieldDescription>}
-      {field.state.meta.errors.length > 0 && <FieldError>{field.state.meta.errors[0]}</FieldError>}
+      {field.state.meta.errors.length > 0 && (
+        <FieldError>{field.state.meta.errors[0].message}</FieldError>
+      )}
     </div>
   )
 }
@@ -65,7 +67,9 @@ function CheckboxField({
           {description && <FieldDescription>{description}</FieldDescription>}
         </div>
       </div>
-      {field.state.meta.errors.length > 0 && <FieldError>{field.state.meta.errors[0]}</FieldError>}
+      {field.state.meta.errors.length > 0 && (
+        <FieldError>{field.state.meta.errors[0].message}</FieldError>
+      )}
     </div>
   )
 }
@@ -91,7 +95,9 @@ function NumberInputField({
         {...props}
       />
       {description && <FieldDescription>{description}</FieldDescription>}
-      {field.state.meta.errors.length > 0 && <FieldError>{field.state.meta.errors[0]}</FieldError>}
+      {field.state.meta.errors.length > 0 && (
+        <FieldError>{field.state.meta.errors[0].message}</FieldError>
+      )}
     </div>
   )
 }
@@ -117,7 +123,9 @@ function OTPField({
         {...props}
       />
       {description && <FieldDescription>{description}</FieldDescription>}
-      {field.state.meta.errors.length > 0 && <FieldError>{field.state.meta.errors[0]}</FieldError>}
+      {field.state.meta.errors.length > 0 && (
+        <FieldError>{field.state.meta.errors[0].message}</FieldError>
+      )}
     </div>
   )
 }
@@ -144,7 +152,9 @@ function SelectField({
         {...props}
       />
       {description && <FieldDescription>{description}</FieldDescription>}
-      {field.state.meta.errors.length > 0 && <FieldError>{field.state.meta.errors[0]}</FieldError>}
+      {field.state.meta.errors.length > 0 && (
+        <FieldError>{field.state.meta.errors[0].message}</FieldError>
+      )}
     </div>
   )
 }
@@ -165,7 +175,7 @@ function SwitchField({
         {label && <FieldLabel htmlFor={field.name}>{label}</FieldLabel>}
         {description && <FieldDescription>{description}</FieldDescription>}
         {field.state.meta.errors.length > 0 && (
-          <FieldError>{field.state.meta.errors[0]}</FieldError>
+          <FieldError>{field.state.meta.errors[0].message}</FieldError>
         )}
       </div>
       <Switch
@@ -201,7 +211,9 @@ function TextInputField({
         {...props}
       />
       {description && <FieldDescription>{description}</FieldDescription>}
-      {field.state.meta.errors.length > 0 && <FieldError>{field.state.meta.errors[0]}</FieldError>}
+      {field.state.meta.errors.length > 0 && (
+        <FieldError>{field.state.meta.errors[0].message}</FieldError>
+      )}
     </div>
   )
 }
@@ -227,7 +239,9 @@ function TextAreaField({
         {...props}
       />
       {description && <FieldDescription>{description}</FieldDescription>}
-      {field.state.meta.errors.length > 0 && <FieldError>{field.state.meta.errors[0]}</FieldError>}
+      {field.state.meta.errors.length > 0 && (
+        <FieldError>{field.state.meta.errors[0].message}</FieldError>
+      )}
     </div>
   )
 }

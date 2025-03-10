@@ -12,7 +12,7 @@ export function Card({
   return (
     <Comp
       className={cn(
-        'bg-background flex gap-2 rounded-lg p-3 text-sm ring ring-gray-200',
+        'bg-background flex gap-2 rounded-xl p-3 text-sm ring ring-gray-200',
         asChild && [
           'hover:ring-gray-300',
           'focus-visible:outline-focus-600 focus-visible:outline-2',

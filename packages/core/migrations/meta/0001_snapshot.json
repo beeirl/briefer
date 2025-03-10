@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "4bf53453-400a-4b9f-981b-67516298835d",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "28157b31-00f7-4246-b7d0-a62028afc9a0",
+  "prevId": "4bf53453-400a-4b9f-981b-67516298835d",
   "tables": {
     "asset": {
       "name": "asset",
@@ -117,6 +117,27 @@
           "type": "json",
           "primaryKey": false,
           "notNull": false,
+          "autoincrement": false
+        },
+        "gemini_video_uri": {
+          "name": "gemini_video_uri",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "model": {
+          "name": "model",
+          "type": "enum('gemini-2.0-flash','twelvelabs-pegasus')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "prompt": {
+          "name": "prompt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
           "autoincrement": false
         },
         "status": {

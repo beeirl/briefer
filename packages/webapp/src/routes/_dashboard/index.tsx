@@ -6,6 +6,7 @@ import {
 } from '@/components/create-brief-dialog'
 import { DashboardLayout, DashboardLayoutContent, DashboardLayoutTitle } from '@/layouts/dashboard'
 import { queryClient, trpc } from '@/utils/trpc'
+import { Badge } from '@briefer/ui/badge'
 import { Button } from '@briefer/ui/button'
 import { Card } from '@briefer/ui/card'
 import { useQuery } from '@tanstack/react-query'
@@ -52,12 +53,24 @@ function Briefs() {
         <DashboardLayoutContent>
           <DashboardLayoutTitle>Briefs</DashboardLayoutTitle>
           <div className="flex flex-col gap-2">
-            {briefList.map((brief, index) => (
+            {briefList.map((brief) => (
               <Card asChild key={brief.id}>
-                <Link to="/$briefID" params={{ briefID: brief.id }}>
-                  <span className="flex-1 truncate">Brief #{index + 1}</span>
+                <Link to="/brief/$briefID" params={{ briefID: brief.id }}>
+                  <div className="flex flex-1 items-center gap-2">
+                    <span className="truncate font-medium">{brief.title}</span>
+                    {(brief.status === 'pending' || brief.status === 'processing') && (
+                      <Badge color="gray" size="sm">
+                        Processing
+                      </Badge>
+                    )}
+                    {brief.status === 'failed' && (
+                      <Badge color="red" size="sm">
+                        Failed
+                      </Badge>
+                    )}
+                  </div>
                   <span className="text-gray-400">
-                    {new Date(brief.createdAt).toLocaleDateString()}
+                    {new Date(brief.createdAt).toLocaleString()}
                   </span>
                 </Link>
               </Card>

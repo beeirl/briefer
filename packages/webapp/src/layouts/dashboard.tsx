@@ -31,8 +31,8 @@ export function DashboardLayout({
   const user = userQuery.data!
 
   return (
-    <div className={cn('mx-auto flex max-w-2xl flex-col gap-6 px-4 py-5', className)}>
-      <div className="flex items-center justify-between">
+    <div className={cn('mx-auto flex max-w-2xl flex-col', className)}>
+      <div className="sticky top-0 z-50 flex h-14 items-center justify-between bg-white px-4">
         <Link className="flex items-center gap-2" to="/">
           <BrieferLogoIcon className="h-auto w-4" />
           <span className="font-medium">Briefer</span>
@@ -83,9 +83,9 @@ export function DashboardLayout({
 }
 
 export function DashboardLayoutContent({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={cn('flex flex-col gap-6', className)} {...props} />
+  return <div className={cn('flex flex-col gap-6 px-4 pb-6 pt-3', className)} {...props} />
 }
 
 export function DashboardLayoutTitle({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={cn('text-xl font-semibold', className)} {...props} />
+  return <div className={cn('text-lg font-medium', className)} {...props} />
 }

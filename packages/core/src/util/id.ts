@@ -2,6 +2,7 @@ import { customAlphabet } from 'nanoid'
 import { ulid } from 'ulid'
 
 const prefixes = {
+  asset: 'ass',
   brief: 'brf',
   user: 'usr',
 } as const

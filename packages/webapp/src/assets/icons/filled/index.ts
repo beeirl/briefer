@@ -1,1 +1,6 @@
 export { default as Bolt } from './bolt.svg?react'
+export { default as Pause } from './pause.svg?react'
+export { default as Play } from './play.svg?react'
+export { default as VolumeHigh } from './volume-high.svg?react'
+export { default as VolumeLow } from './volume-low.svg?react'
+export { default as VolumeOff } from './volume-off.svg?react'
