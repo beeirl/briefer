@@ -149,6 +149,7 @@ export namespace Brief {
     z.object({
       id: z.string(),
       prompt: z.string().optional(),
+      title: z.string().optional(),
     }),
     async (input) =>
       useTransaction(async (tx) => {
@@ -157,6 +158,7 @@ export namespace Brief {
           .set({
             prompt: input.prompt,
             status: input.prompt ? 'pending' : undefined,
+            title: input.title,
           })
           .where(and(eq(briefTable.id, input.id), eq(briefTable.userID, useUserID())))
         await afterTx(() => bus.publish(Resource.Bus, Event.Updated, { briefID: input.id }))

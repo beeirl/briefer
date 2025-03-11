@@ -46,16 +46,19 @@ export function UpdateBriefDialogPopup() {
   const form = useAppForm({
     defaultValues: {
       prompt: brief.prompt,
+      title: brief.title,
     },
     validators: {
       onSubmit: z.object({
         prompt: z.string().min(1, 'Please enter a prompt'),
+        title: z.string().min(1, 'Please enter a title'),
       }),
     },
     onSubmit: async ({ value, formApi }) => {
       await updateBriefMutation.mutateAsync({
         id: brief.id,
-        prompt: value.prompt,
+        prompt: formApi.getFieldMeta('prompt')?.isDirty ? value.prompt : undefined,
+        title: formApi.getFieldMeta('title')?.isDirty ? value.title : undefined,
       })
       queryClient.invalidateQueries({ queryKey: trpc.brief.fromID.queryKey(brief.id) })
       toast('Brief updated', {
@@ -79,8 +82,11 @@ export function UpdateBriefDialogPopup() {
           form.handleSubmit()
         }}
       >
+        <form.AppField name="title">
+          {(field) => <field.TextInputField autoFocus label="Title" />}
+        </form.AppField>
         <form.AppField name="prompt">
-          {(field) => <field.TextAreaField autoFocus autoSize label="Prompt" />}
+          {(field) => <field.TextAreaField autoSize label="Prompt" />}
         </form.AppField>
         <form.AppForm>
           <form.Subscribe selector={(state) => state.canSubmit}>
